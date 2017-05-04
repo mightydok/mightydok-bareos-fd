@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+#
+
+Director {
+  Name = bareos-mon
+  Password = "{{ mightydok_bareos_fd_mon_pass }}"
+  Monitor = yes
+  Description = ""
+}

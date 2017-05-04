@@ -1,2 +1,7 @@
 ---
 # handlers file for mightydok-bareos-fd
+
+-   name: restart bareos-fd
+    service:
+        name: bareos-fd
+        state: restarted

@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+#
+
+[bareos_bareos-16.2]
+name=bareos bareos-16.2
+type=rpm-md
+baseurl=http://download.bareos.org/bareos/release/16.2/CentOS_{{ ansible_lsb.major_release | int }}/
+gpgcheck=1
+gpgkey=http://download.bareos.org/bareos/release/16.2/CentOS_{{ ansible_lsb.major_release | int }}/repodata/repomd.xml.key
+enabled=1

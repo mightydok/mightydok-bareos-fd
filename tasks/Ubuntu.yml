@@ -1,0 +1,23 @@
+---
+# tasks file for bareos (Ubuntu specific)
+
+# Add bareos repo key
+-   name: Add Bareos repository key
+    apt_key:
+        url: "http://download.bareos.org/bareos/release/latest/xUbuntu_16.04/Release.key"
+        state: present
+
+# Add bareos repo
+-   name: Add Bareos repository
+    apt_repository:
+        repo: deb http://download.bareos.org/bareos/release/latest/xUbuntu_16.04/ /
+        state: present
+
+# Install bareos-sd packages
+-   name: Install bareos-fd pakages
+    apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+        cache_valid_time: 3600
+    with_items: "{{ mightydok_bareos_fd_packages }}"

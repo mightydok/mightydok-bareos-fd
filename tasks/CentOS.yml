@@ -1,0 +1,16 @@
+---
+# tasks file for bareos (CentOS specific)
+
+-   name: Add bareos YUM repository
+    template:
+        src: centos_repo.repo.j2
+        dest: /etc/yum.repos.d/bareos_centos_repo.repo
+        owner: root
+        group: root
+        mode: 0644
+
+-   name: Install bareos-fd
+    yum:
+        name: "{{ item }}"
+        state: present
+    with_items: bareos_client_packages

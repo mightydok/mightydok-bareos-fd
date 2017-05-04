@@ -1,2 +1,40 @@
 ---
 # tasks file for mightydok-bareos-fd
+
+- name: Include distribution specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- include: CentOS.yml
+  when: ansible_distribution == "CentOS"
+
+- include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+# Place config for bareos-dir and bareos-mon
+-   name: Place config for bareos-fd
+    template:
+      src: templates/{{ item }}.j2
+      dest: /etc/bareos/bareos-fd.d/director/{{ item }}
+      owner: bareos
+      group: bareos
+      mode: 0750
+    with_items:
+      - bareos-dir.conf
+      - bareos-mon.conf
+    notify: restart bareos-fd
+
+# Place config for bareos-fd
+-   name: Place client config for bareos-fd
+    template:
+      src: templates/myself.conf.j2
+      dest: /etc/bareos/bareos-fd.d/client/myself.conf
+      owner: bareos
+      group: bareos
+      mode: 0750
+    notify: restart bareos-fd
+
+# Autostart bareos-sd
+-   name: Ensure bareos-sd autorun
+    service:
+        name: bareos-sd
+        enabled: yes

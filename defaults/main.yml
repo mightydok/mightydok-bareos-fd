@@ -1,2 +1,12 @@
 ---
 # defaults file for mightydok-bareos-fd
+# Package list
+mightydok_bareos_fd_packages:
+    -   bareos-filedaemon
+
+# Default pass
+mightydok_bareos_fd_dir_pass: ""
+mightydok_bareos_fd_mon_pass: ""
+
+# Set Client Name
+mightydok_bareos_fd_name: "{{ ansible_hostname }}"
