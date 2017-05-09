@@ -2,7 +2,7 @@
 #
 
 Client {
-  Name = "{{ mightydok_bareos_fd_name | default(ansible_nodename) }}-fd"
+  Name = "{{ mightydok_bareos_fd_name | default(ansible_fqdn) }}-fd"
   Maximum Concurrent Jobs = 20
 
   # remove comment from "Plugin Directory" to load plugins from specified directory.
