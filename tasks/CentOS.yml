@@ -1,6 +1,14 @@
 ---
 # tasks file for bareos (CentOS specific)
 
+-   name: Remove bacula client
+    yum:
+        name: "{{ item }}"
+        state: absent
+    with_items:
+        - bacula-common
+        - bacula-client
+
 -   name: Add bareos YUM repository
     template:
         src: centos_repo.repo.j2
