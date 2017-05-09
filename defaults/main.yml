@@ -9,4 +9,4 @@ mightydok_bareos_fd_dir_pass: ""
 mightydok_bareos_fd_mon_pass: ""
 
 # Set Client Name
-mightydok_bareos_fd_name: "{{ ansible_hostname }}"
+mightydok_bareos_fd_name: "{{ ansible_fqdn }}"
