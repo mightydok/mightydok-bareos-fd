@@ -8,7 +8,7 @@
   when: ansible_distribution == "CentOS"
 
 - include: Ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
 # Place config for bareos-dir and bareos-mon
 -   name: Place config for bareos-fd
